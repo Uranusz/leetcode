@@ -9,6 +9,7 @@ LINK.c=$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 LDFLAGS=
 STDLIBS= -lstdc++
 CFLAGS=-ansi -I$(ROOT)/include -Wall -DLINUX -D_GNU_SOURCE $(EXTRA) -g
+CPPFLAGS= -std=c++11
 RANLIB=echo
 AR=ar
 AWK=awk
