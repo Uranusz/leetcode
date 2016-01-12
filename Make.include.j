@@ -9,8 +9,7 @@ $(BINDIR):
 	@mkdir $(BINDIR)
 
 %.class: %.java | $(BINDIR)
-	$(JC) $(JFLAGS) $<
-	@mv $@ $(BINDIR)
+	$(JC) -d $(BINDIR) $(JFLAGS) $<
 
 clean:
 	@echo "remove ./bin..."
