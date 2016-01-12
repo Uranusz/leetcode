@@ -30,4 +30,5 @@
 *.swp
 
 *.class
-*/*/.DS_Store
+# recursive igonre .DS_Store in sub-dir
+**/.DS_Store
