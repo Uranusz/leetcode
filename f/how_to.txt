@@ -1,0 +1,8 @@
+1. build 
+	for example: 
+	make FindPeakElement162.class
+
+2. run
+	for example:
+	cd ./bin/
+	java FindPeakElement162 FindPeakElement162.class
