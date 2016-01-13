@@ -1,0 +1,7 @@
+alias ll='/bin/ls -l'
+
+fmtjava_and_csharp() {
+	astyle -A2 -CSK -xW -w -xw -Y -f -p -H -U -xe -k1 -W1 -xj -z2 -xC80 -n "$@"
+}
+
+alias fmtj='fmtjava_and_csharp $1'
