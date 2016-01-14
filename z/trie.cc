@@ -22,69 +22,77 @@ using namespace std;
 
 const int NUM_OF_ALPHABET = 26;
 
-class TrieNode {
-public:
-    // Initialize your data structure here.
-    TrieNode() : children(new TrieNode*[NUM_OF_ALPHABET]()), isWord(false) {
+class TrieNode
+{
+    public:
+        // Initialize your data structure here.
+        TrieNode() : children(new TrieNode*[NUM_OF_ALPHABET]()), isWord(false)
+        {
+        }
 
-    }
-
-    TrieNode ** children;
-    bool isWord;
+        TrieNode** children;
+        bool isWord;
 };
 
-class Trie {
-public:
-    Trie() {
-        root = new TrieNode();
-    }
-
-    // Inserts a word into the trie.
-    void insert(string word) {
-
-        TrieNode* current = root;
-
-        for (unsigned int i = 0; i < word.length(); ++i) {
-            if (current->children[word[i]-'a'] == NULL)
-                current->children[word[i] -'a'] = new TrieNode();
-            current = current->children[word[i] - 'a'];
+class Trie
+{
+    public:
+        Trie()
+        {
+            root = new TrieNode();
         }
 
-        current->isWord = true;
-    }
+        // Inserts a word into the trie.
+        void insert(string word)
+        {
+            TrieNode* current = root;
 
-    // Returns if the word is in the trie.
-    bool search(string word) {
+            for (unsigned int i = 0; i < word.length(); ++i)
+            {
+                if (current->children[word[i] - 'a'] == NULL)
+                    current->children[word[i] - 'a'] = new TrieNode();
 
-        TrieNode* current = root;
-
-        for (unsigned int i = 0; i < word.length(); ++i) {
-            if (current->children[word[i]-'a'] != NULL)
                 current = current->children[word[i] - 'a'];
-            else
-                return false;
+            }
+
+            current->isWord = true;
         }
 
-        return current->isWord;
-    }
+        // Returns if the word is in the trie.
+        bool search(string word)
+        {
+            TrieNode* current = root;
 
-    // Returns if there is any word in the trie
-    // that starts with the given prefix.
-    bool startsWith(string prefix) {
-        TrieNode* current = root;
+            for (unsigned int i = 0; i < word.length(); ++i)
+            {
+                if (current->children[word[i] - 'a'] != NULL)
+                    current = current->children[word[i] - 'a'];
+                else
+                    return false;
+            }
 
-        for (unsigned int i = 0; i < prefix.length(); ++i) {
-            if (current->children[prefix[i]-'a'] != NULL)
-                current = current->children[prefix[i] - 'a'];
-            else
-                return false;
+            return current->isWord;
         }
 
-        return true;
-    }
+        // Returns if there is any word in the trie
+        // that starts with the given prefix.
+        bool startsWith(string prefix)
+        {
+            TrieNode* current = root;
 
-private:
-    TrieNode* root;
+            for (unsigned int i = 0; i < prefix.length(); ++i)
+            {
+                if (current->children[prefix[i] - 'a'] != NULL)
+                    current = current->children[prefix[i] - 'a'];
+                else
+                    return false;
+            }
+
+            return true;
+        }
+
+    private:
+        TrieNode* root;
 };
 
 // Your Trie object will be instantiated and called as such:
@@ -98,9 +106,9 @@ private:
  *  Description:
  * =====================================================================================
  */
-int main ( int argc, char *argv[] ) {
+int main(int argc, char* argv[])
+{
     Trie trie;
-
     trie.insert("somethingc");
     bool b = trie.search("something");
     cout << b << endl;
@@ -109,6 +117,5 @@ int main ( int argc, char *argv[] ) {
     trie.insert("something");
     b = trie.search("something");
     cout << b << endl;
-
     return 0;
 }				/* ----------  end of function main  ---------- */

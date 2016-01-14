@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  29_divide_two_integers.cc
+//       Filename:  275_h_index.cc
 //
 //    Description:
 //
 //        Version:  1.0
-//        Created:  01/11/2016 09:56:08 PM
+//        Created:  01/14/2016 10:28:05 PM
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -14,12 +14,10 @@
 //
 // =====================================================================================
 
+#include <vector>
 #include <iostream>
-#include <limits.h>
-#include	<stdlib.h>
 
 using namespace std;
-
 
 // =====================================================================================
 //        Class:  Solution
@@ -28,45 +26,26 @@ using namespace std;
 class Solution
 {
     public:
-        int divide(int dividend, int divisor)
+        int hIndex(vector<int>& citations)
         {
-            if (divisor == 0) return INT_MAX;
+            int size = static_cast<int>(citations.size());
+            int left = 0, right = size - 1;
 
-            if (divisor == 1) return dividend;
-
-            if (divisor == -1) return dividend == INT_MIN ? INT_MAX : -dividend;
-
-            unsigned int a = dividend >= 0 ? dividend : -dividend;
-            unsigned int b = divisor >= 0 ? divisor : -divisor;
-            unsigned int result = 0;
-
-            while (true)
+            while (left <= right)
             {
-                unsigned int c = b, k = 1;
+                int mid = (left + right) / 2;
 
-                while (a > c)
-                {
-                    c <<= 1;
-                    k <<= 1;
-                }
-
-                if (a < c)
-                {
-                    c >>= 1;
-                    k >>= 1;
-                }
-
-                if (k == 0) break;
-
-                a -= c;
-                result += k;
+                if (citations[mid] < size - mid)
+                    left = mid + 1;
+                else
+                    right = mid - 1;
             }
 
-            int sign = (dividend ^ divisor) >> 31 ? -1 : 1;
-            return sign == 1 ? result : -result;
+            return size - left;
         }
 }; // -----  end of class Solution  -----
 
+#include	<stdlib.h>
 
 // ===  FUNCTION  ======================================================================
 //         Name:  main
@@ -75,7 +54,10 @@ class Solution
 int
 main(int argc, char* argv[])
 {
-    cout << Solution().divide(-10, 3) << endl;
+    vector<int> v;
+    //for(int i = 0; i < 6; ++i)
+    //    v.push_back(i-1);
+    cout << Solution().hIndex(v) << endl;
     return EXIT_SUCCESS;
 }				// ----------  end of function main  ----------
 

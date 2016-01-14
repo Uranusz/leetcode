@@ -24,27 +24,29 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution {
-public:
-    int maxProduct(vector<string>& words) {
-        typedef unsigned int uint;
-        uint total = words.size();
+class Solution
+{
+    public:
+        int maxProduct(vector<string>& words)
+        {
+            typedef unsigned int uint;
+            uint total = words.size();
+            vector<int> masks(total, 0);
 
-        vector<int> masks(total, 0);
+            // 1. generate mask for each word
+            for (uint i = 0; i < total; ++i)
+                for (uint j = 0; j < words[i].length(); ++j)
+                    masks[i] |= 1 << (words[i][j] - 'a');
 
-        // 1. generate mask for each word
-        for(uint i = 0; i < total; ++i)
-            for(uint j = 0; j < words[i].length(); ++j)
-                masks[i] |= 1 << (words[i][j] - 'a');
+            unsigned long int res = 0;
 
-        unsigned long int res = 0;
-        for(uint i = 0; i < total; ++i)
-            for(uint j = i+1; j < total; ++j)
-                if((masks[i] & masks[j]) == 0)
-                    res = max(res, words[i].length() * words[j].length());
+            for (uint i = 0; i < total; ++i)
+                for (uint j = i + 1; j < total; ++j)
+                    if ((masks[i] & masks[j]) == 0)
+                        res = max(res, words[i].length() * words[j].length());
 
-        return res;
-    }
+            return res;
+        }
 };
 
 // ===  FUNCTION  ======================================================================
@@ -52,13 +54,13 @@ public:
 //  Description:
 // =====================================================================================
 int
-main ( int argc, char *argv[] ) {
+main(int argc, char* argv[])
+{
     vector<string> words;
     words.push_back("ab");
     words.push_back("abc");
     words.push_back("abd");
     words.push_back("es");
-
     cout << Solution().maxProduct(words) << endl;
     return EXIT_SUCCESS;
 }				// ----------  end of function main  ----------

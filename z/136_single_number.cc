@@ -23,16 +23,18 @@ using namespace std;
 //        Class:  Solution
 //  Description:  3 states: 0 -> 1 -> 0, need 1 bit
 // =====================================================================================
-class Solution {
-public:
-    int singleNumber(vector<int>& nums) {
-        int bit1 = 0;
+class Solution
+{
+    public:
+        int singleNumber(vector<int>& nums)
+        {
+            int bit1 = 0;
 
-        for(unsigned int i = 0; i < nums.size(); ++i)
-            bit1 = (nums[i] ^ bit1);
+            for (unsigned int i = 0; i < nums.size(); ++i)
+                bit1 = (nums[i] ^ bit1);
 
-        return bit1;
-    }
+            return bit1;
+        }
 
 }; // -----  end of class Solution  -----
 
@@ -42,16 +44,17 @@ public:
 //  Description:
 // =====================================================================================
 int
-main ( int argc, char *argv[] ) {
+main(int argc, char* argv[])
+{
     vector<int> v;
 
-    for(int i = 0; i < 23; ++i) {
-        v.push_back(i/2);
-        cout << i/2 << " ";
+    for (int i = 0; i < 23; ++i)
+    {
+        v.push_back(i / 2);
+        cout << i / 2 << " ";
     }
 
     Solution s;
     cout << "result: " << s.singleNumber(v) << endl;
-
     return 0;
 }				// ----------  end of function main  ----------

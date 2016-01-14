@@ -23,38 +23,47 @@
 
 using namespace std;
 
-class Solution {
-public:
-    bool isHappy (int n) {
-        vector<int> v;
+class Solution
+{
+    public:
+        bool isHappy(int n)
+        {
+            vector<int> v;
 
-        while (n) {
-            int digit = n % 10;
+            while (n)
+            {
+                int digit = n % 10;
 
-            if (digit != 0)
-                v.push_back (digit);
+                if (digit != 0)
+                    v.push_back(digit);
 
-            n = n / 10;
-        }
-
-        if (v.size() == 1) {
-            if (v[0] == 1 || v[0] == 7) {
-                cout << "!!!" << endl;
-                return true;
-            } else {
-                cout << "???" << endl;
-                return false;
+                n = n / 10;
             }
-        } else {
-            int new_num = 0;
 
-            for (unsigned int i = 0; i < v.size(); ++i)
-                new_num += v[i] * v[i];
+            if (v.size() == 1)
+            {
+                if (v[0] == 1 || v[0] == 7)
+                {
+                    cout << "!!!" << endl;
+                    return true;
+                }
+                else
+                {
+                    cout << "???" << endl;
+                    return false;
+                }
+            }
+            else
+            {
+                int new_num = 0;
 
-            cout << "new_num: " << new_num << ", continue computing..." << endl;
-            return isHappy (new_num);
+                for (unsigned int i = 0; i < v.size(); ++i)
+                    new_num += v[i] * v[i];
+
+                cout << "new_num: " << new_num << ", continue computing..." << endl;
+                return isHappy(new_num);
+            }
         }
-    }
 };
 
 
@@ -65,20 +74,23 @@ public:
  * =====================================================================================
  */
 int
-main ( int argc, char *argv[] ) {
+main(int argc, char* argv[])
+{
     int num = 0;
 
     //cout << argc << endl;
-    if (argc != 2) {
+    if (argc != 2)
+    {
         cout << "please enter a number..." << endl;
         return -1;
-    } else
-        num = atoi (argv[1]);
+    }
+    else
+        num = atoi(argv[1]);
 
     cout << "num: " << num << endl;
     Solution s;
 
-    if (s.isHappy (num))
+    if (s.isHappy(num))
         cout << "happy!" << endl;
     else
         cout << "sad..." << endl;

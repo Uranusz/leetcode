@@ -1,11 +1,11 @@
 // =====================================================================================
 //
-//       Filename:  268_missing_number.cc
+//       Filename:  274_h_index.cc
 //
 //    Description:
 //
 //        Version:  1.0
-//        Created:  01/03/2016 08:34:35 PM
+//        Created:  01/14/2016 09:58:27 PM
 //       Revision:  none
 //       Compiler:  g++
 //
@@ -14,12 +14,12 @@
 //
 // =====================================================================================
 
+#include <algorithm>
 #include <vector>
-#include <functional>
-#include <numeric>
 #include <iostream>
 
 using namespace std;
+
 
 // =====================================================================================
 //        Class:  Solution
@@ -28,32 +28,21 @@ using namespace std;
 class Solution
 {
     public:
-        // 1. naive implementation
-        #if 0
-        int missingNumber(vector<int>& nums)
+        int hIndex(vector<int>& citations)
         {
-            int sum = accumulate(nums.begin(), nums.end(), 0);
-            int size = nums.size();
-            int expected = size * (size + 1) / 2;
-            return expected - sum;
+            // 1. sort it first
+            sort(citations.begin(), citations.end());
+            int start = citations.size();
+
+            for (unsigned int i = 0; i < citations.size(); ++i)
+                if (citations[i] < start)
+                    start--;
+
+            return start;
         }
-        #else
-        // 2. bit manipulation
-        int missingNumber(vector<int>& nums)
-        {
-            int xorRes = 0, xorResExpected = 0;
-
-            for (int n : nums)
-                xorRes ^= n;
-
-            for (unsigned int i = 0; i <= nums.size(); ++i)
-                xorResExpected ^= i;
-
-            return xorResExpected ^ xorRes;
-        }
-        #endif
-
 }; // -----  end of class Solution  -----
+
+#include	<stdlib.h>
 
 // ===  FUNCTION  ======================================================================
 //         Name:  main
@@ -63,11 +52,11 @@ int
 main(int argc, char* argv[])
 {
     vector<int> v;
-
-    for (int i = 0; i < 10; ++i)
-        if (i != 9)
-            v.push_back(i);
-
-    cout << "res: " << Solution().missingNumber(v) << endl;
-    return 0;
+    v.push_back(1);
+    v.push_back(5);
+    v.push_back(3);
+    v.push_back(2);
+    v.push_back(4);
+    cout << Solution().hIndex(v) << endl;
+    return EXIT_SUCCESS;
 }				// ----------  end of function main  ----------

@@ -26,30 +26,33 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution {
-public:
-    int nthUglyNumber(int n) {
-        int primes[3] = {2, 3, 5};
-        int indexes[3] = {0, 0, 0};
+class Solution
+{
+    public:
+        int nthUglyNumber(int n)
+        {
+            int primes[3] = {2, 3, 5};
+            int indexes[3] = {0, 0, 0};
+            vector<int> uglyNums(1, 1);
 
-        vector<int> uglyNums(1, 1);
+            for (int i = 0; i < n - 1; ++i)
+            {
+                // find min number
+                int minNum = numeric_limits<int>::max();
 
-        for(int i = 0; i < n - 1; ++i) {
-            // find min number
-            int minNum = numeric_limits<int>::max();
-            for (int j = 0; j < 3; ++j)
-                minNum = min(minNum, uglyNums[indexes[j]] * primes[j]);
+                for (int j = 0; j < 3; ++j)
+                    minNum = min(minNum, uglyNums[indexes[j]] * primes[j]);
 
-            uglyNums.push_back(minNum);
+                uglyNums.push_back(minNum);
 
-            // update index
-            for (int j = 0; j < 3; ++j)
-                if (minNum == uglyNums[indexes[j]] * primes[j])
-                    indexes[j]++;
+                // update index
+                for (int j = 0; j < 3; ++j)
+                    if (minNum == uglyNums[indexes[j]] * primes[j])
+                        indexes[j]++;
+            }
+
+            return uglyNums.back();
         }
-
-        return uglyNums.back();
-    }
 }; // -----  end of class Solution  -----
 
 // ===  FUNCTION  ======================================================================
@@ -57,8 +60,8 @@ public:
 //  Description:
 // =====================================================================================
 int
-main ( int argc, char *argv[] ) {
-
+main(int argc, char* argv[])
+{
     cout << "res: " << Solution().nthUglyNumber(12) << endl;
     return EXIT_SUCCESS;
 }

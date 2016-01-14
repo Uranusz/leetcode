@@ -23,20 +23,23 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution {
-public:
-    void sortColors(vector<int>& nums) {
-        int i = 0, j = 0, k = static_cast<int>(nums.size()) - 1;
+class Solution
+{
+    public:
+        void sortColors(vector<int>& nums)
+        {
+            int i = 0, j = 0, k = static_cast<int>(nums.size()) - 1;
 
-        while(j <= k) {
-            if (nums[j] == 0)
-                swap(nums[i++], nums[j++]);
-            else if(nums[j] == 1)
-                j++;
-            else if(nums[j] == 2)
-                swap(nums[j], nums[k--]);
+            while (j <= k)
+            {
+                if (nums[j] == 0)
+                    swap(nums[i++], nums[j++]);
+                else if (nums[j] == 1)
+                    j++;
+                else if (nums[j] == 2)
+                    swap(nums[j], nums[k--]);
+            }
         }
-    }
 }; // -----  end of class Solution  -----
 
 
@@ -47,7 +50,8 @@ public:
 //  Description:
 // =====================================================================================
 int
-main ( int argc, char *argv[] ) {
+main(int argc, char* argv[])
+{
     vector<int> v;
     v.push_back(1);
     v.push_back(0);
@@ -60,10 +64,9 @@ main ( int argc, char *argv[] ) {
     //v.push_back(0);
     //v.push_back(1);
     //v.push_back(2);
-
     Solution().sortColors(v);
 
-    for(int i = 0; i < static_cast<int>(v.size()); ++i)
+    for (int i = 0; i < static_cast<int>(v.size()); ++i)
         cout << v[i] << " ";
 
     cout << endl;

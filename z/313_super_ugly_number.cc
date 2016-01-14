@@ -26,54 +26,60 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution {
-public:
-#if 1
-    int nthSuperUglyNumber(int n, vector<int>& primes) {
-        // 1. keep the indexes
-        vector<int> idx(primes.size(), 0);
-        vector<int> list(1, 1);
+class Solution
+{
+    public:
+        #if 1
+        int nthSuperUglyNumber(int n, vector<int>& primes)
+        {
+            // 1. keep the indexes
+            vector<int> idx(primes.size(), 0);
+            vector<int> list(1, 1);
+            typedef unsigned int uint;
 
-        typedef unsigned int uint;
+            for (int i = 0; i < n - 1; ++i)
+            {
+                int num = numeric_limits<int>::max();
 
-        for(int i = 0; i < n - 1; ++i) {
-            int num = numeric_limits<int>::max();
+                // find the min number
+                for (uint j = 0; j < primes.size(); ++j)
+                    num = min(num, list[idx[j]] * primes[j]);
 
-            // find the min number
-            for (uint j = 0; j < primes.size(); ++j)
-                num = min(num, list[idx[j]] * primes[j]);
+                list.push_back(num);
 
-            list.push_back(num);
+                // upate idx
+                for (uint j = 0; j < primes.size(); ++j)
+                    if (num == (list[idx[j]] * primes[j]))
+                        idx[j]++;
+            }
 
-            // upate idx
-            for (uint j = 0; j < primes.size(); ++j)
-                if(num == (list[idx[j]] * primes[j]))
-                    idx[j]++;
+            return list.back();
         }
+        #else
+        // faster one
+        int nthSuperUglyNumber(int n, vector<int>& primes)
+        {
+            vector<int> factors = primes;
+            vector<int> list(1, 1);
+            int idx[primes.size()] = {0};
 
-        return list.back();
-    }
-#else
-    // faster one
-    int nthSuperUglyNumber(int n, vector<int>& primes) {
-        vector<int> factors = primes;
-        vector<int> list(1, 1);
-        int idx[primes.size()] = {0};
+            for (int i = 0; i < n - 1; ++i)
+            {
+                int minNum = numeric_limits<int>::max();
 
-        for(int i = 0; i < n - 1; ++i) {
-            int minNum = numeric_limits<int>::max();
-            for(int n : factors)
-                minNum = min(minNum, n);
-            list.push_back(minNum);
+                for (int n : factors)
+                    minNum = min(minNum, n);
 
-            for (uint j = 0; j < factors.size(); ++j)
-                if(minNum == factors[j])
-                    factors[j] = primes[j] * list[++idx[j]];
+                list.push_back(minNum);
+
+                for (uint j = 0; j < factors.size(); ++j)
+                    if (minNum == factors[j])
+                        factors[j] = primes[j] * list[++idx[j]];
+            }
+
+            return list.back();
         }
-
-        return list.back();
-    }
-#endif
+        #endif
 }; // -----  end of class Solution  -----
 
 
@@ -82,13 +88,13 @@ public:
 //  Description:
 // =====================================================================================
 int
-main ( int argc, char *argv[] ) {
+main(int argc, char* argv[])
+{
     vector<int> v;
     v.push_back(2);
     v.push_back(7);
     v.push_back(13);
     v.push_back(19);
-
     cout << "res: " << Solution().nthSuperUglyNumber(12000, v) << endl;
     return EXIT_SUCCESS;
 }				// ----------  end of function main  ----------
