@@ -23,15 +23,12 @@ using namespace std;
 //        Class:  Solution
 //  Description:  3 states: 00 -> 01 -> 10 -> 00, need 2 bits
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int singleNumber(vector<int>& nums)
-        {
+        int singleNumber(vector<int>& nums) {
             int bit1 = 0, bit2 = 0;
 
-            for (unsigned int i = 0; i < nums.size(); ++i)
-            {
+            for (unsigned int i = 0; i < nums.size(); ++i) {
                 bit1 = (nums[i] ^ bit1) & ~bit2;
                 bit2 = (nums[i] ^ bit2) & ~bit1;
             }
@@ -48,8 +45,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     v.push_back(2);
     v.push_back(2);

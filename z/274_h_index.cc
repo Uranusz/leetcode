@@ -25,11 +25,9 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int hIndex(vector<int>& citations)
-        {
+        int hIndex(vector<int>& citations) {
             // 1. sort it first
             sort(citations.begin(), citations.end());
             int start = citations.size();
@@ -49,8 +47,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     v.push_back(1);
     v.push_back(5);

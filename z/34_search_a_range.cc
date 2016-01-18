@@ -23,11 +23,9 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        vector<int> searchRange(vector<int>& nums, int target)
-        {
+        vector<int> searchRange(vector<int>& nums, int target) {
             int lb = lower_bound(nums, target);
             int rb = lower_bound(nums, target + 1) - 1;
 
@@ -42,12 +40,10 @@ class Solution
         // 1. left bound  - if(nums[mid] < target) else ...
         // 2. right bound - if(nums[mid] > target) else ...
         //-----------------------------------------------------------------------------
-        int lower_bound(vector<int>& nums, int target)
-        {
+        int lower_bound(vector<int>& nums, int target) {
             int l = 0, r = nums.size() - 1;
 
-            while (l <= r)
-            {
+            while (l <= r) {
                 int mid = (l + r) / 2;
 
                 if (nums[mid] < target)
@@ -68,8 +64,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     Solution().searchRange(v, 1);
     return EXIT_SUCCESS;

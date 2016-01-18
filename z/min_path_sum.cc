@@ -22,11 +22,9 @@
 
 using namespace std;
 
-class Solution
-{
+class Solution {
     public:
-        int minPathSum(vector<vector<int> >& grid)
-        {
+        int minPathSum(vector<vector<int> >& grid) {
             int m = grid.size();
 
             if (m == 0)
@@ -37,10 +35,8 @@ class Solution
             if (n == 0)
                 return 0;
 
-            for (int i = 0; i < m; ++i)
-            {
-                for (int j = 0; j < n; ++j)
-                {
+            for (int i = 0; i < m; ++i) {
+                for (int j = 0; j < n; ++j) {
                     if (i == 0 && j > 0)
                         grid[0][j] += grid[0][j - 1];
                     else if (i > 0 && j == 0)
@@ -64,8 +60,7 @@ class Solution
  * =====================================================================================
  */
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<vector<int> > grid;
     vector<int> v;
     v.push_back(1);

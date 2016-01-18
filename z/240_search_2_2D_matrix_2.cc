@@ -25,16 +25,13 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        bool searchMatrix(vector<vector<int>>& matrix, int target)
-        {
+        bool searchMatrix(vector<vector<int>>& matrix, int target) {
             int rowCount = matrix.size();
             int colCount = matrix[0].size();
 
-            for (int i = 0, j = colCount - 1; i < rowCount && j >= 0;)
-            {
+            for (int i = 0, j = colCount - 1; i < rowCount && j >= 0;) {
                 if (target == matrix[i][j])
                     return true;
                 else if (target < matrix[i][j])
@@ -54,8 +51,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<vector<int>> v;
     vector<int> v1, v2, v3, v4;
     v1.push_back(1);

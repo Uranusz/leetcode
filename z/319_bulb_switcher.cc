@@ -24,11 +24,9 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int bulbSwitch(int n)
-        {
+        int bulbSwitch(int n) {
             return sqrt(n);
         }
 }; // -----  end of class Solution  -----
@@ -38,8 +36,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     cout << Solution().bulbSwitch(10) << endl;
     return 0;
 }				// ----------  end of function main  ----------

@@ -28,26 +28,22 @@ using namespace std;
 //                   cyclic
 //                3. solve this problem using slow and fast pointer
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int findDuplicate(vector<int>& nums)
-        {
+        int findDuplicate(vector<int>& nums) {
             if (nums.size() <= 1)
                 return -1;
 
             int slow = nums[0], fast = nums[nums[0]];
 
-            while (slow != fast)
-            {
+            while (slow != fast) {
                 slow = nums[slow];
                 fast = nums[nums[fast]];
             }
 
             fast = 0;
 
-            while (fast != slow)
-            {
+            while (fast != slow) {
                 fast = nums[fast];
                 slow = nums[slow];
             }
@@ -63,8 +59,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     v.push_back(1);
     v.push_back(3);

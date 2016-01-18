@@ -24,11 +24,9 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int maxProduct(vector<string>& words)
-        {
+        int maxProduct(vector<string>& words) {
             typedef unsigned int uint;
             uint total = words.size();
             vector<int> masks(total, 0);
@@ -54,8 +52,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<string> words;
     words.push_back("ab");
     words.push_back("abc");

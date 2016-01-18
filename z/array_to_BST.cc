@@ -23,19 +23,16 @@ using namespace std;
 /*
  * Definition for a binary tree node.
  */
-struct TreeNode
-{
+struct TreeNode {
     int val;
     TreeNode* left;
     TreeNode* right;
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution
-{
+class Solution {
     public:
-        TreeNode* sortedArrayToBST(vector<int>& nums)
-        {
+        TreeNode* sortedArrayToBST(vector<int>& nums) {
             if (nums.size() == 0)
                 return NULL;
 
@@ -45,10 +42,8 @@ class Solution
         }
 
     private:
-        void makeTreeNode(TreeNode* node, vector<int>& nums, int begin, int end)
-        {
-            if (begin == end)
-            {
+        void makeTreeNode(TreeNode* node, vector<int>& nums, int begin, int end) {
+            if (begin == end) {
                 node->val = nums[begin];
                 return;
             }
@@ -56,22 +51,19 @@ class Solution
             int pivot = (begin + end) / 2;
             node->val = nums[pivot];
 
-            if (pivot != begin)
-            {
+            if (pivot != begin) {
                 node->left = new TreeNode(-1);
                 makeTreeNode(node->left, nums, begin, pivot - 1);
             }
 
-            if (pivot != end)
-            {
+            if (pivot != end) {
                 node->right = new TreeNode(-1);
                 makeTreeNode(node->right, nums, pivot + 1, end);
             }
         }
 
     public:
-        void deleteTree(TreeNode* t)
-        {
+        void deleteTree(TreeNode* t) {
             if (!t)
                 return;
 
@@ -94,8 +86,7 @@ class Solution
  * =====================================================================================
  */
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     Solution s;
     vector<int> v;
     //v.push_back(1);

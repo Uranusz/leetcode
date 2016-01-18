@@ -23,16 +23,13 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int hIndex(vector<int>& citations)
-        {
+        int hIndex(vector<int>& citations) {
             int size = static_cast<int>(citations.size());
             int left = 0, right = size - 1;
 
-            while (left <= right)
-            {
+            while (left <= right) {
                 int mid = (left + right) / 2;
 
                 if (citations[mid] < size - mid)
@@ -52,8 +49,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     //for(int i = 0; i < 6; ++i)
     //    v.push_back(i-1);

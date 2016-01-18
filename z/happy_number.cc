@@ -23,15 +23,12 @@
 
 using namespace std;
 
-class Solution
-{
+class Solution {
     public:
-        bool isHappy(int n)
-        {
+        bool isHappy(int n) {
             vector<int> v;
 
-            while (n)
-            {
+            while (n) {
                 int digit = n % 10;
 
                 if (digit != 0)
@@ -40,21 +37,15 @@ class Solution
                 n = n / 10;
             }
 
-            if (v.size() == 1)
-            {
-                if (v[0] == 1 || v[0] == 7)
-                {
+            if (v.size() == 1) {
+                if (v[0] == 1 || v[0] == 7) {
                     cout << "!!!" << endl;
                     return true;
-                }
-                else
-                {
+                } else {
                     cout << "???" << endl;
                     return false;
                 }
-            }
-            else
-            {
+            } else {
                 int new_num = 0;
 
                 for (unsigned int i = 0; i < v.size(); ++i)
@@ -74,17 +65,14 @@ class Solution
  * =====================================================================================
  */
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     int num = 0;
 
     //cout << argc << endl;
-    if (argc != 2)
-    {
+    if (argc != 2) {
         cout << "please enter a number..." << endl;
         return -1;
-    }
-    else
+    } else
         num = atoi(argv[1]);
 
     cout << "num: " << num << endl;

@@ -26,14 +26,12 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
 
 #define A(i) (nums[(2*i + 1) % (nums.size() | 1)])
 
     public:
-        void wiggleSort(vector<int>& nums)
-        {
+        void wiggleSort(vector<int>& nums) {
             int n = nums.size();
             // find the median
             auto midptr = nums.begin() + n / 2;
@@ -42,8 +40,7 @@ class Solution
             // three-way-partition in O(n) time with O(1) space.
             int i = 0, j = 0, k = n - 1;
 
-            while (j <= k)
-            {
+            while (j <= k) {
                 if (A(j) > mid)
                     swap(A(i++), A(j++));
                 else if (A(j) < mid)
@@ -61,12 +58,10 @@ class Solution
         //-----------------------------------------------------------------------------
         #if 0
         // 1. recursive version
-        void findMedian(vector<int>& nums, int p, int q)
-        {
+        void findMedian(vector<int>& nums, int p, int q) {
             int i = p, j = p, mid = nums.size() / 2;
 
-            while (j < q)
-            {
+            while (j < q) {
                 if (A(j) >= A(q))
                     swap(A(j++), A(i++));
                 else
@@ -84,23 +79,20 @@ class Solution
         }
 
         // 2. non-recursive version
-        void partition(vector<int>& nums)
-        {
+        void partition(vector<int>& nums) {
             int mid = nums.size() / 2;
             stack<int> s;
             s.push(0);
             s.push(nums.size() - 1);
 
-            while (!s.empty())
-            {
+            while (!s.empty()) {
                 int q = s.top();
                 s.pop();
                 int p = s.top();
                 s.pop();
                 int i = p, j = p;
 
-                while (j < q)
-                {
+                while (j < q) {
                     if (A(j) > A(q))
                         swap(A(j++), A(i++));
                     else
@@ -111,13 +103,10 @@ class Solution
 
                 if (i == mid)
                     return;
-                else if (i < mid)
-                {
+                else if (i < mid) {
                     s.push(i + 1);
                     s.push(q);
-                }
-                else
-                {
+                } else {
                     s.push(p);
                     s.push(i - 1);
                 }
@@ -129,22 +118,19 @@ class Solution
 #undef A
 #define A(i) (nums[i])
         // 3. quick sort
-        void quickSort(vector<int>& nums)
-        {
+        void quickSort(vector<int>& nums) {
             stack<int> s;
             s.push(0);
             s.push(nums.size() - 1);
 
-            while (!s.empty())
-            {
+            while (!s.empty()) {
                 int q = s.top();
                 s.pop();
                 int p = s.top();
                 s.pop();
                 int i = p, j = p;
 
-                while (j < q)
-                {
+                while (j < q) {
                     if (A(j) < A(q))
                         swap(A(j++), A(i++));
                     else
@@ -153,14 +139,12 @@ class Solution
 
                 swap(A(i), A(q));
 
-                if (i < q)
-                {
+                if (i < q) {
                     s.push(i + 1);
                     s.push(q);
                 }
 
-                if (i > p)
-                {
+                if (i > p) {
                     s.push(p);
                     s.push(i - 1);
                 }
@@ -175,8 +159,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     v.push_back(1);
     v.push_back(5);

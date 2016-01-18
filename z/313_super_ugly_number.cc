@@ -26,19 +26,16 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
         #if 1
-        int nthSuperUglyNumber(int n, vector<int>& primes)
-        {
+        int nthSuperUglyNumber(int n, vector<int>& primes) {
             // 1. keep the indexes
             vector<int> idx(primes.size(), 0);
             vector<int> list(1, 1);
             typedef unsigned int uint;
 
-            for (int i = 0; i < n - 1; ++i)
-            {
+            for (int i = 0; i < n - 1; ++i) {
                 int num = numeric_limits<int>::max();
 
                 // find the min number
@@ -57,14 +54,12 @@ class Solution
         }
         #else
         // faster one
-        int nthSuperUglyNumber(int n, vector<int>& primes)
-        {
+        int nthSuperUglyNumber(int n, vector<int>& primes) {
             vector<int> factors = primes;
             vector<int> list(1, 1);
             int idx[primes.size()] = {0};
 
-            for (int i = 0; i < n - 1; ++i)
-            {
+            for (int i = 0; i < n - 1; ++i) {
                 int minNum = numeric_limits<int>::max();
 
                 for (int n : factors)
@@ -88,8 +83,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     v.push_back(2);
     v.push_back(7);

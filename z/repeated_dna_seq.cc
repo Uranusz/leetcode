@@ -22,11 +22,9 @@
 
 using namespace std;
 
-class Solution
-{
+class Solution {
     public:
-        vector<string> findRepeatedDnaSequences(string s)
-        {
+        vector<string> findRepeatedDnaSequences(string s) {
             vector<string> v;
 
             if (s.size() <= 10)
@@ -41,8 +39,7 @@ class Solution
             for (int i = 0; i < 9; ++i)
                 hash_value = hash_value << 2 | (s[i] - 'A' + 1) % 5;
 
-            for (unsigned int i = 9; i < s.size(); ++i)
-            {
+            for (unsigned int i = 9; i < s.size(); ++i) {
                 if (hash_table[hash_value = (hash_value << 2 | (s[i] - 'A' + 1) % 5) &
                                             0xfffff]++ == 1)
                     v.push_back(s.substr(i - 9, 10));
@@ -63,8 +60,7 @@ class Solution
  * =====================================================================================
  */
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     Solution s;
     vector<string> v =
         s.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCAAAAAGGGGGAAAAAGGGGGTTT");

@@ -25,11 +25,9 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int divide(int dividend, int divisor)
-        {
+        int divide(int dividend, int divisor) {
             if (divisor == 0) return INT_MAX;
 
             if (divisor == 1) return dividend;
@@ -40,18 +38,15 @@ class Solution
             unsigned int b = divisor >= 0 ? divisor : -divisor;
             unsigned int result = 0;
 
-            while (true)
-            {
+            while (true) {
                 unsigned int c = b, k = 1;
 
-                while (a > c)
-                {
+                while (a > c) {
                     c <<= 1;
                     k <<= 1;
                 }
 
-                if (a < c)
-                {
+                if (a < c) {
                     c >>= 1;
                     k >>= 1;
                 }
@@ -73,8 +68,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     cout << Solution().divide(-10, 3) << endl;
     return EXIT_SUCCESS;
 }				// ----------  end of function main  ----------

@@ -25,11 +25,9 @@ using namespace std;
 //
 //                a & ~a is a trick to keep just the lowest 1-bit of a number
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        vector<int> singleNumber(vector<int>& nums)
-        {
+        vector<int> singleNumber(vector<int>& nums) {
             int xorRes = 0, firstOne = 0;
 
             for (int n : nums)
@@ -50,12 +48,10 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
 
-    for (int i = 0; i < 23; ++i)
-    {
+    for (int i = 0; i < 23; ++i) {
         v.push_back(i / 2);
         cout << i / 2 << " ";
     }

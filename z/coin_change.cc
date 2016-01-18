@@ -27,11 +27,9 @@ using namespace std;
  *  Description:
  * =====================================================================================
  */
-class Solution
-{
+class Solution {
     public:
-        int coinChange(vector<int>& coins, int amount)
-        {
+        int coinChange(vector<int>& coins, int amount) {
             vector<int> table(amount + 1, amount + 1);
             table[0] = 0;
 
@@ -51,8 +49,7 @@ class Solution
  *  Description:
  * =====================================================================================
  */
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     Solution s;
     vector<int> v;
     v.push_back(1);

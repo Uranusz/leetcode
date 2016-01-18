@@ -25,13 +25,11 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
         // 1. naive implementation
         #if 0
-        int missingNumber(vector<int>& nums)
-        {
+        int missingNumber(vector<int>& nums) {
             int sum = accumulate(nums.begin(), nums.end(), 0);
             int size = nums.size();
             int expected = size * (size + 1) / 2;
@@ -39,8 +37,7 @@ class Solution
         }
         #else
         // 2. bit manipulation
-        int missingNumber(vector<int>& nums)
-        {
+        int missingNumber(vector<int>& nums) {
             int xorRes = 0, xorResExpected = 0;
 
             for (int n : nums)
@@ -60,8 +57,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
 
     for (int i = 0; i < 10; ++i)

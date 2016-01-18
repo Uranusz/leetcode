@@ -23,19 +23,16 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
 
-        int rangeBitwiseAnd(int m, int n)
-        {
+        int rangeBitwiseAnd(int m, int n) {
             #if 0
             // version 1
             vector<int> bits_m, bits_n;
 
             // 1. get each bit of m and n
-            while (m || n)
-            {
+            while (m || n) {
                 bits_m.push_back(m % 2);
                 bits_n.push_back(n % 2);
                 m >>= 1;
@@ -44,8 +41,7 @@ class Solution
 
             int result = 0;
 
-            for (int i = static_cast<int>(bits_n.size()) - 1; i >= 0; --i)
-            {
+            for (int i = static_cast<int>(bits_n.size()) - 1; i >= 0; --i) {
                 if (bits_m[i] == bits_n[i])
                     result += (bits_m[i] << i);
                 else
@@ -65,8 +61,7 @@ class Solution
             // 3. calculate the length of diff_part
             int length = 0;
 
-            while (diff_part)
-            {
+            while (diff_part) {
                 diff_part >>= 1;
                 length++;
             }
@@ -81,8 +76,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     cout << Solution().rangeBitwiseAnd(5, 5) << endl;
     return EXIT_SUCCESS;
 }				// ----------  end of function main  ----------

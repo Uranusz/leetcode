@@ -25,11 +25,9 @@ using namespace std;
  *  Description:
  * =====================================================================================
  */
-class Solution
-{
+class Solution {
     public:
-        vector<vector<int> > permute(vector<int>& nums)
-        {
+        vector<vector<int> > permute(vector<int>& nums) {
             vector<vector<int> > res;
             vector<bool> used(nums.size(), false);
             vector<int> v;
@@ -39,17 +37,14 @@ class Solution
 
     private:
         void _permute(const vector<int>& nums, vector<bool>& used,
-                      vector<vector<int> >& res, vector<int>& v)
-        {
-            if (v.size() == nums.size())
-            {
+                      vector<vector<int> >& res, vector<int>& v) {
+            if (v.size() == nums.size()) {
                 res.push_back(v);
                 return;
             }
 
             for (unsigned int i = 0; i < nums.size(); ++i)
-                if (!used[i])
-                {
+                if (!used[i]) {
                     int candidate = nums[i];
                     used[i] = true;
                     v.push_back(candidate);
@@ -70,8 +65,7 @@ class Solution
  * =====================================================================================
  */
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
 
     for (int i = 0; i < 12; ++i)
@@ -81,8 +75,7 @@ main(int argc, char* argv[])
     vector<vector<int> > res = s.permute(v);
 
     for (vector<vector<int> >::const_iterator outer = res.cbegin();
-            outer != res.cend(); ++outer)
-    {
+            outer != res.cend(); ++outer) {
         for (vector<int>::const_iterator inner = (*outer).cbegin();
                 inner != (*outer).cend(); ++inner)
             cout << *inner << " ";

@@ -23,11 +23,9 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        string removeDuplicateLetters(string s)
-        {
+        string removeDuplicateLetters(string s) {
             char result[26] = {'\0'};
             int count[26] = {0};
             bool seen[26] = {false};
@@ -39,19 +37,16 @@ class Solution
             int stack_top = -1;
 
             // simulate the stack
-            for (unsigned int i = 0; i < s.length(); ++i)
-            {
+            for (unsigned int i = 0; i < s.length(); ++i) {
                 char c = s[i];
 
-                if (seen[c - 'a'])
-                {
+                if (seen[c - 'a']) {
                     count[c - 'a']--;
                     continue;
                 }
 
                 while (stack_top >= 0 && c < result[stack_top]
-                        && count[result[stack_top] - 'a'] > 0)
-                {
+                        && count[result[stack_top] - 'a'] > 0) {
                     seen[result[stack_top] - 'a'] = false;
                     result[stack_top--] = '\0';
                 }
@@ -72,8 +67,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     cout << Solution().removeDuplicateLetters("fbccddaffdec") << endl;
     return 0;
 }				// ----------  end of function main  ----------

@@ -23,15 +23,12 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        void sortColors(vector<int>& nums)
-        {
+        void sortColors(vector<int>& nums) {
             int i = 0, j = 0, k = static_cast<int>(nums.size()) - 1;
 
-            while (j <= k)
-            {
+            while (j <= k) {
                 if (nums[j] == 0)
                     swap(nums[i++], nums[j++]);
                 else if (nums[j] == 1)
@@ -50,8 +47,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     vector<int> v;
     v.push_back(1);
     v.push_back(0);

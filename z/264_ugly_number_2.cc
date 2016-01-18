@@ -26,17 +26,14 @@ using namespace std;
 //        Class:  Solution
 //  Description:
 // =====================================================================================
-class Solution
-{
+class Solution {
     public:
-        int nthUglyNumber(int n)
-        {
+        int nthUglyNumber(int n) {
             int primes[3] = {2, 3, 5};
             int indexes[3] = {0, 0, 0};
             vector<int> uglyNums(1, 1);
 
-            for (int i = 0; i < n - 1; ++i)
-            {
+            for (int i = 0; i < n - 1; ++i) {
                 // find min number
                 int minNum = numeric_limits<int>::max();
 
@@ -60,8 +57,7 @@ class Solution
 //  Description:
 // =====================================================================================
 int
-main(int argc, char* argv[])
-{
+main(int argc, char* argv[]) {
     cout << "res: " << Solution().nthUglyNumber(12) << endl;
     return EXIT_SUCCESS;
 }
