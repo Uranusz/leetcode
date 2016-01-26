@@ -44,9 +44,14 @@ class Solution {
 
                 // update index
                 for (int j = 0; j < 3; ++j)
-                    if (minNum == uglyNums[indexes[j]] * primes[j])
+                    if (minNum == uglyNums[indexes[j]] * primes[j]) // !!
                         indexes[j]++;
+
+                cout << indexes[0] << " " << indexes[1] << " " << indexes[2] << endl;
             }
+
+            for (auto i : uglyNums)
+                cout << i << " ";
 
             return uglyNums.back();
         }
