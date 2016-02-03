@@ -17,6 +17,10 @@ public class Question10 {
         put('{','}');
         put('[',']');
         
+      //        put(']','[');   need those??????
+     //   put('}','{');
+     //    put(')', '(');
+        
         
     }};
     
@@ -47,6 +51,12 @@ public static void main(String args[]){
         Boolean isBalanced = q10.solve("[(}]");
 
         System.out.println("10. test for string '[(}]': ");
-        System.out.println("parentheses is balanced: " + isBalanced);
+        System.out.println("parentheses is balanced: " + isBalanced);  //false
+        
+        
+         Boolean isBalanced2 = q10.solve("[()]");
+
+        System.out.println("10. test for string '[()]': ");
+          System.out.println("parentheses is balanced: " + isBalanced2);  //false...wrong!!!!!!!
 }
 
