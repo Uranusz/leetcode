@@ -1,0 +1,52 @@
+/**Given sequence consisting of parentheses, determine whether the expression is balanced or not. A sequence of parentheses is balanced if every open parentheses can be paired uniquely with a closed parentheses that occurs after the former. Also, the interval between them must be balanced. You will be given three types of parentheses: (, {, and [.
+
+{[()]} - This is a balanced parentheses. {[(])} - This is not a balanced parentheses.
+Constraints :
+1≤lens≤1000, where lens is the length of the sequence. Each character of the sequence will be one of {, }, (, ), [, ]. **/
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ *
+ * @author jenny
+ */
+public class Question10 {
+     private static final Map<Character, Character> map=new HashMap<Character, Character>(){{
+        put('(', ')');
+        put('{','}');
+        put('[',']');
+        
+        
+    }};
+    
+    public boolean solve(String s)
+    {
+        if(s.length()>1000||s.length()<1) {
+        System.out.println("the lens of string should be in range of 1 to 1000");
+        }
+        Stack stack=new Stack();
+        for(char c: s.toCharArray()){
+            if(map.containsKey(c)){
+                stack.push(c);
+                
+            }
+            else if(stack.isEmpty()||map.get(stack.pop())!=c){            //null pointer error
+                return false;
+            }
+        }
+        return stack.isEmpty();
+        
+        
+    }
+    
+}
+
+public static void main(String args[]){
+ Question10 q10 = new Question10();
+        Boolean isBalanced = q10.solve("[(}]");
+
+        System.out.println("10. test for string '[(}]': ");
+        System.out.println("parentheses is balanced: " + isBalanced);
+}
+
